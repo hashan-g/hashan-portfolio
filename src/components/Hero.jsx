@@ -20,8 +20,8 @@ export default function Hero() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
-          {/* Main Hero Content (7 cols) */}
-          <div className="lg:col-span-7 flex flex-col items-start">
+          {/* Main Hero Content (7 cols - left) */}
+          <div className="lg:col-span-7 flex flex-col items-start order-1">
             
             {/* Status Beacon */}
             <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-accent-cyan/10 border border-accent-cyan/25 text-accent-cyan text-xs font-mono font-medium mb-6">
@@ -115,89 +115,67 @@ export default function Hero() {
 
           </div>
 
-          {/* Interactive Profile & Terminal Card (5 cols) */}
-          <div className="lg:col-span-5 flex justify-center">
-            <div className="w-full max-w-md bg-dark-card/90 rounded-2xl border border-white/10 shadow-2xl shadow-black/60 overflow-hidden relative backdrop-blur-md">
-              {/* Terminal Window Header */}
-              <div className="bg-[#0b101c] px-4 py-3 border-b border-white/10 flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-full bg-rose-500/80 inline-block"></span>
-                  <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block"></span>
-                  <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span>
-                  <span className="ml-2 font-mono text-xs text-slate-400">developer-profile.ts</span>
-                </div>
-                <span className="text-[10px] font-mono uppercase tracking-wider text-accent-cyan/80 bg-accent-cyan/10 px-2 py-0.5 rounded">
-                  Status: Ready
-                </span>
-              </div>
+          {/* Premium Profile Photo Card (5 cols - right on desktop, below on mobile) */}
+          <div className="lg:col-span-5 flex justify-center order-2 w-full">
+            <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-[390px] xl:max-w-[420px] group">
+              
+              {/* Soft Ambient Glow Effect matching accent color */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-accent-cyan/20 via-accent-indigo/20 to-purple-500/20 rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none -z-10" />
 
-              {/* Code Snippet Body */}
-              <div className="p-5 font-mono text-xs leading-relaxed space-y-3 bg-[#0a0f1d]/90 text-slate-300">
-                <div>
-                  <span className="text-purple-400">const</span>{' '}
-                  <span className="text-sky-300">developer</span> = &#123;
-                </div>
-                <div className="pl-4 space-y-1">
-                  <div>
-                    <span className="text-slate-400">name:</span>{' '}
-                    <span className="text-emerald-300">"{profileData.name}"</span>,
-                  </div>
-                  <div>
-                    <span className="text-slate-400">degrees:</span> [
-                    <div className="pl-4 text-emerald-300/90">
-                      "BSc Physical Science (Ruhuna)",
-                    </div>
-                    <div className="pl-4 text-emerald-300/90">
-                      "BIT (UCSC)"
-                    </div>
-                    ],
-                  </div>
-                  <div>
-                    <span className="text-slate-400">interests:</span> [
-                    <div className="pl-4 text-indigo-300">
-                      "Software Development", "Data Analytics", "AI/LLM"
-                    </div>
-                    ],
-                  </div>
-                  <div>
-                    <span className="text-slate-400">featuredWork:</span>{' '}
-                    <span className="text-accent-cyan">"SpendWise (AI Finance Manager)"</span>,
-                  </div>
-                  <div>
-                    <span className="text-slate-400">openToWork:</span>{' '}
-                    <span className="text-amber-300">true</span>
-                  </div>
-                </div>
-                <div>&#125;;</div>
+              {/* Profile Card Shell */}
+              <div className="relative rounded-3xl bg-dark-card/90 border border-white/10 p-3 sm:p-4 backdrop-blur-md shadow-2xl shadow-black/80 transition-all duration-300 group-hover:border-accent-cyan/30">
+                
+                {/* Photo Framing Container */}
+                <div className="relative rounded-2xl overflow-hidden bg-slate-900 border border-white/5">
+                  <img
+                    src="/hashan-profile.jpg"
+                    alt="Hashan Ganegoda - Software Developer and Data & AI Enthusiast"
+                    fetchPriority="high"
+                    width="768"
+                    height="1024"
+                    className="w-full aspect-[3/4] object-cover object-[center_16%] transition-transform duration-500 group-hover:scale-[1.02]"
+                  />
 
-                {/* Live Terminal Output Box */}
-                <div className="mt-4 pt-3 border-t border-white/5 space-y-1.5 text-[11px]">
-                  <div className="text-slate-500">// Target Opportunity Roles:</div>
-                  <div className="flex flex-wrap gap-1.5 pt-1">
-                    {profileData.targetRoles.slice(0, 5).map((role, rIdx) => (
-                      <span
-                        key={rIdx}
-                        className="px-2 py-0.5 rounded bg-white/5 text-slate-300 border border-white/5 text-[10px]"
-                      >
-                        {role}
-                      </span>
-                    ))}
+                  {/* Gradient shadow overlay at the bottom for smooth transition to card metadata */}
+                  <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#0a0f1d] via-[#0a0f1d]/40 to-transparent pointer-events-none" />
+
+                  {/* Top Floating Badge: Open to Opportunities */}
+                  <div className="absolute top-3 left-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-dark-bg/85 backdrop-blur-md border border-white/10 text-[11px] font-mono text-emerald-400 shadow-md">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>Open to Opportunities</span>
+                  </div>
+
+                  {/* Bottom Internal Badge: Positioning */}
+                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs font-mono">
+                    <span className="px-2.5 py-1 rounded-lg bg-dark-bg/80 backdrop-blur-md border border-white/10 text-slate-200">
+                      Software Developer
+                    </span>
+                    <span className="px-2.5 py-1 rounded-lg bg-dark-bg/80 backdrop-blur-md border border-white/10 text-accent-cyan">
+                      Data & AI
+                    </span>
                   </div>
                 </div>
-              </div>
 
-              {/* Bottom Card Footer */}
-              <div className="px-5 py-3 bg-[#0b1120] border-t border-white/5 flex items-center justify-between text-xs">
-                <span className="text-slate-400 flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                  Active Portfolio
-                </span>
-                <a
-                  href="#contact"
-                  className="text-accent-cyan hover:underline font-mono text-xs"
-                >
-                  Contact &rarr;
-                </a>
+                {/* Sub-Card Metadata & Identity Footer */}
+                <div className="mt-3 px-2 py-1.5 flex items-center justify-between">
+                  <div className="flex flex-col">
+                    <span className="text-sm font-bold text-white tracking-tight">
+                      {profileData.name}
+                    </span>
+                    <span className="text-[11px] font-mono text-slate-400">
+                      BSc (Ruhuna) • BIT (UCSC)
+                    </span>
+                  </div>
+
+                  <a
+                    href="#about"
+                    className="flex items-center gap-1 text-xs font-mono text-accent-cyan hover:underline transition-all"
+                  >
+                    <span>Profile Info</span>
+                    <span className="text-[10px]">&rarr;</span>
+                  </a>
+                </div>
+
               </div>
             </div>
           </div>
