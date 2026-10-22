@@ -15,12 +15,12 @@ export default function Hero() {
     <section id="hero" className="relative min-h-[92vh] flex items-center pt-28 pb-16 overflow-hidden">
       {/* Background Subtle Gradient Blobs */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[350px] bg-accent-cyan/10 blur-[120px] rounded-full pointer-events-none -z-10" />
-      <div className="absolute top-1/3 right-10 w-[400px] h-[300px] bg-accent-indigo/10 blur-[130px] rounded-full pointer-events-none -z-10" />
+      <div className="absolute top-1/3 right-10 w-[420px] h-[320px] bg-accent-indigo/10 blur-[130px] rounded-full pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 xl:gap-16 items-center">
           
-          {/* Main Hero Content (7 cols - left) */}
+          {/* Main Hero Content (Left Column: ≈ 58%) */}
           <div className="lg:col-span-7 flex flex-col items-start order-1">
             
             {/* Status Beacon */}
@@ -52,7 +52,7 @@ export default function Hero() {
             </p>
 
             {/* Action Buttons */}
-            <div className="flex flex-wrap items-center gap-3.5 mb-10 w-full sm:w-auto">
+            <div className="flex flex-wrap items-center gap-3.5 mb-8 lg:mb-10 w-full sm:w-auto">
               {/* Primary CTA: View Featured Project */}
               <a
                 href="#featured-project"
@@ -97,8 +97,8 @@ export default function Hero() {
               </a>
             </div>
 
-            {/* Quick Credentials / Domains */}
-            <div className="grid grid-cols-2 sm:grid-cols-2 gap-2.5 w-full max-w-xl">
+            {/* Desktop Credentials / Domains (Visible on Desktop) */}
+            <div className="hidden lg:grid grid-cols-2 gap-2.5 w-full max-w-xl">
               {highlightPills.map((pill, idx) => {
                 const Icon = pill.icon;
                 return (
@@ -115,69 +115,63 @@ export default function Hero() {
 
           </div>
 
-          {/* Premium Profile Photo Card (5 cols - right on desktop, below on mobile) */}
-          <div className="lg:col-span-5 flex justify-center order-2 w-full">
-            <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-[390px] xl:max-w-[420px] group">
+          {/* Premium Professional Profile Photo Visual (Right Column: ≈ 42%) */}
+          <div className="lg:col-span-5 flex flex-col items-center lg:items-end justify-center order-2 w-full">
+            <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-[430px] xl:max-w-[460px] group">
               
-              {/* Soft Ambient Glow Effect matching accent color */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-accent-cyan/20 via-accent-indigo/20 to-purple-500/20 rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none -z-10" />
+              {/* Soft Ambient Glow Effect matching website accent */}
+              <div className="absolute -inset-2 bg-gradient-to-tr from-accent-cyan/15 via-accent-indigo/15 to-transparent rounded-3xl blur-2xl opacity-60 group-hover:opacity-90 transition-opacity duration-500 pointer-events-none -z-10" />
 
-              {/* Profile Card Shell */}
-              <div className="relative rounded-3xl bg-dark-card/90 border border-white/10 p-3 sm:p-4 backdrop-blur-md shadow-2xl shadow-black/80 transition-all duration-300 group-hover:border-accent-cyan/30">
+              {/* Clean Profile Card Framing */}
+              <div className="relative rounded-2xl sm:rounded-3xl bg-dark-card/60 border border-white/10 p-2.5 sm:p-3 backdrop-blur-md shadow-2xl shadow-black/80 transition-all duration-300 group-hover:border-accent-cyan/30">
                 
-                {/* Photo Framing Container */}
-                <div className="relative rounded-2xl overflow-hidden bg-slate-900 border border-white/5">
+                {/* Photo Container - Clean, Uncluttered, Pure Natural Visual */}
+                <div className="relative rounded-xl sm:rounded-2xl overflow-hidden bg-slate-900 border border-white/5">
                   <img
                     src="/hashan-profile.jpg"
                     alt="Hashan Ganegoda - Software Developer and Data & AI Enthusiast"
                     fetchPriority="high"
                     width="768"
                     height="1024"
-                    className="w-full aspect-[3/4] object-cover object-[center_16%] transition-transform duration-500 group-hover:scale-[1.02]"
+                    className="w-full aspect-[3/4] object-cover object-[center_15%] transition-transform duration-700 ease-out group-hover:scale-[1.015]"
                   />
-
-                  {/* Gradient shadow overlay at the bottom for smooth transition to card metadata */}
-                  <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#0a0f1d] via-[#0a0f1d]/40 to-transparent pointer-events-none" />
-
-                  {/* Top Floating Badge: Open to Opportunities */}
-                  <div className="absolute top-3 left-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-dark-bg/85 backdrop-blur-md border border-white/10 text-[11px] font-mono text-emerald-400 shadow-md">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span>Open to Opportunities</span>
-                  </div>
-
-                  {/* Bottom Internal Badge: Positioning */}
-                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs font-mono">
-                    <span className="px-2.5 py-1 rounded-lg bg-dark-bg/80 backdrop-blur-md border border-white/10 text-slate-200">
-                      Software Developer
-                    </span>
-                    <span className="px-2.5 py-1 rounded-lg bg-dark-bg/80 backdrop-blur-md border border-white/10 text-accent-cyan">
-                      Data & AI
-                    </span>
-                  </div>
                 </div>
 
-                {/* Sub-Card Metadata & Identity Footer */}
-                <div className="mt-3 px-2 py-1.5 flex items-center justify-between">
-                  <div className="flex flex-col">
-                    <span className="text-sm font-bold text-white tracking-tight">
-                      {profileData.name}
-                    </span>
-                    <span className="text-[11px] font-mono text-slate-400">
-                      BSc (Ruhuna) • BIT (UCSC)
-                    </span>
+                {/* Minimal Identity Information Directly Below Photo */}
+                <div className="mt-3.5 px-2 pb-1.5 text-center sm:text-left">
+                  <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight">
+                    {profileData.name}
+                  </h3>
+                  <div className="mt-1 space-y-0.5">
+                    <div className="text-xs sm:text-sm font-semibold text-accent-cyan">
+                      Software Developer
+                    </div>
+                    <div className="text-xs font-mono text-slate-400">
+                      Data &amp; AI Enthusiast
+                    </div>
                   </div>
-
-                  <a
-                    href="#about"
-                    className="flex items-center gap-1 text-xs font-mono text-accent-cyan hover:underline transition-all"
-                  >
-                    <span>Profile Info</span>
-                    <span className="text-[10px]">&rarr;</span>
-                  </a>
                 </div>
 
               </div>
+
             </div>
+
+            {/* Mobile Credentials / Domains (Stacked below photo & minimal label on mobile) */}
+            <div className="grid lg:hidden grid-cols-2 gap-2.5 w-full max-w-sm sm:max-w-md mt-8">
+              {highlightPills.map((pill, idx) => {
+                const Icon = pill.icon;
+                return (
+                  <div
+                    key={idx}
+                    className="flex items-center gap-2.5 px-3 py-2 rounded-xl bg-dark-card/60 border border-white/5 text-xs text-slate-300"
+                  >
+                    <Icon className={`w-3.5 h-3.5 ${pill.color} shrink-0`} />
+                    <span className="truncate">{pill.label}</span>
+                  </div>
+                );
+              })}
+            </div>
+
           </div>
 
         </div>
