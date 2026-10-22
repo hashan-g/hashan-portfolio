@@ -134,7 +134,7 @@ export default function Hero() {
                 {/* Photo Container - Clean, Uncluttered, Pure Natural Visual */}
                 <div className="relative rounded-xl sm:rounded-2xl overflow-hidden bg-slate-900 border border-white/5">
                   <img
-                    src="/hashan-profile.jpg"
+                    src={`${import.meta.env.BASE_URL}hashan-profile.jpg`}
                     alt="Hashan Ganegoda - Software Developer and Data & AI Enthusiast"
                     fetchPriority="high"
                     width="768"

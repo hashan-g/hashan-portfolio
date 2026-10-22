@@ -11,7 +11,7 @@ export const profileData = {
   links: {
     github: "https://github.com/hashan-g",
     linkedin: "https://www.linkedin.com/in/hashan-ganegoda/",
-    resume: "/resume.pdf",
+    resume: `${import.meta.env.BASE_URL}resume.pdf`,
     emailRaw: "ganegodahashan@gmail.com",
     email: "mailto:ganegodahashan@gmail.com",
   },

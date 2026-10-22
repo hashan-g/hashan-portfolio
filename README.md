@@ -138,10 +138,19 @@ Ensure you have Node.js (v18+ or v20+) installed on your machine.
 
 ## 🚀 Deployment Guide
 
-This portfolio compiles to a clean, fast static bundle in `dist/`. It can be hosted on any static hosting provider:
+This portfolio compiles to a clean, fast static bundle in `dist/`. It can be hosted on GitHub Pages, Vercel, Netlify, or any static hosting provider:
 
-### Option A: Vercel (Recommended)
-1. Import your GitHub repository (`Portfolio-web` or `hashan-portfolio`) on [Vercel](https://vercel.com).
+### Option A: GitHub Pages (Configured via GitHub Actions)
+1. Repository is configured with `.github/workflows/deploy.yml` triggering on pushes to `master`.
+2. In your GitHub repository **Settings > Pages**:
+   - Under **Build and deployment > Source**, select **GitHub Actions**.
+3. Pushes to `master` automatically run the lint check, build the site with base path `/hashan-portfolio/`, and publish to `https://hashan-g.github.io/hashan-portfolio/`.
+4. (Optional) To activate Formspree for direct form submissions:
+   - Go to repository **Settings > Secrets and variables > Actions**.
+   - Add a repository secret or variable named `VITE_FORMSPREE_ENDPOINT` with your Formspree endpoint URL.
+
+### Option B: Vercel
+1. Import your GitHub repository (`hashan-portfolio`) on [Vercel](https://vercel.com).
 2. Framework Preset will be automatically detected as **Vite**.
 3. Build Command: `npm run build`
 4. Output Directory: `dist`
@@ -150,22 +159,12 @@ This portfolio compiles to a clean, fast static bundle in `dist/`. It can be hos
    - Value: `https://formspree.io/f/your_form_id`
 6. Click **Deploy**.
 
-### Option B: Netlify
-1. Connect your GitHub repository on [Netlify](https://app.netlify.com).
+### Option C: Netlify
+1. Connect your GitHub repository (`hashan-portfolio`) on [Netlify](https://app.netlify.com).
 2. Build command: `npm run build`
 3. Publish directory: `dist`
 4. (Optional) In **Site configuration > Environment variables**, add `VITE_FORMSPREE_ENDPOINT`.
 5. Deploy site.
-
-### Option C: GitHub Pages
-1. If hosting on a subpath (e.g., `https://hashan-g.github.io/hashan-portfolio/`), set `base` in `vite.config.js`:
-   ```javascript
-   export default defineConfig({
-     base: '/hashan-portfolio/', // or './' for relative paths
-     plugins: [react()],
-   });
-   ```
-2. Enable GitHub Pages in repository **Settings > Pages** using GitHub Actions or the `gh-pages` branch.
 
 ---
 
