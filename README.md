@@ -132,7 +132,40 @@ Ensure you have Node.js (v18+ or v20+) installed on your machine.
 | `npm run dev` | Starts Vite local development server with Hot Module Replacement (HMR) |
 | `npm run build` | Compiles production-ready bundle into `dist/` |
 | `npm run preview` | Locally previews the production build |
-| `npm run lint` | Runs oxlint / ESLint static analysis to catch syntax & unused imports |
+| `npm run lint` | Runs oxlint static analysis to catch syntax & unused imports |
+
+---
+
+## 🚀 Deployment Guide
+
+This portfolio compiles to a clean, fast static bundle in `dist/`. It can be hosted on any static hosting provider:
+
+### Option A: Vercel (Recommended)
+1. Import your GitHub repository (`Portfolio-web` or `hashan-portfolio`) on [Vercel](https://vercel.com).
+2. Framework Preset will be automatically detected as **Vite**.
+3. Build Command: `npm run build`
+4. Output Directory: `dist`
+5. (Optional) In **Settings > Environment Variables**, add:
+   - Name: `VITE_FORMSPREE_ENDPOINT`
+   - Value: `https://formspree.io/f/your_form_id`
+6. Click **Deploy**.
+
+### Option B: Netlify
+1. Connect your GitHub repository on [Netlify](https://app.netlify.com).
+2. Build command: `npm run build`
+3. Publish directory: `dist`
+4. (Optional) In **Site configuration > Environment variables**, add `VITE_FORMSPREE_ENDPOINT`.
+5. Deploy site.
+
+### Option C: GitHub Pages
+1. If hosting on a subpath (e.g., `https://hashan-g.github.io/hashan-portfolio/`), set `base` in `vite.config.js`:
+   ```javascript
+   export default defineConfig({
+     base: '/hashan-portfolio/', // or './' for relative paths
+     plugins: [react()],
+   });
+   ```
+2. Enable GitHub Pages in repository **Settings > Pages** using GitHub Actions or the `gh-pages` branch.
 
 ---
 
