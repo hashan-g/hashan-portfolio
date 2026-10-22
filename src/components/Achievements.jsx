@@ -4,16 +4,16 @@ import { Trophy, Users, CheckCircle2 } from 'lucide-react';
 
 export default function Achievements() {
   return (
-    <section id="achievements" className="py-24 relative border-t border-white/5 bg-dark-bg/60">
+    <section id="achievements" className="py-20 relative border-t border-white/5 bg-dark-bg/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col items-start mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/10 border border-amber-400/25 text-amber-300 text-xs font-mono uppercase tracking-wider mb-3">
+        <div className="flex flex-col items-start mb-12">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/10 border border-amber-400/25 text-amber-300 text-xs font-mono uppercase tracking-wider mb-2">
             <Trophy className="w-3.5 h-3.5" />
-            <span>Honors & Competitions</span>
+            <span>Honors &amp; Competitions</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
             Achievements
           </h2>
           <p className="mt-2 text-slate-400 text-sm sm:text-base max-w-2xl">

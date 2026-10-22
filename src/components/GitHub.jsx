@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { githubData } from '../data/github';
 import { Github } from './icons/BrandIcons';
-import { ExternalLink, GitBranch } from 'lucide-react';
+import { ExternalLink, GitBranch, Users, User } from 'lucide-react';
 
 export default function GitHub() {
   const [userData, setUserData] = useState(null);
+  const [filter, setFilter] = useState('all'); // 'all', 'personal', 'team'
 
   useEffect(() => {
     // Fetch real public profile metrics from GitHub REST API
@@ -16,7 +17,6 @@ export default function GitHub() {
           setUserData(data);
         }
       } catch (err) {
-        // Graceful handling - fallback to static verified data
         console.debug('GitHub API rate limited or offline; fallback active', err);
       }
     };
@@ -24,22 +24,28 @@ export default function GitHub() {
     fetchGithubData();
   }, []);
 
+  const filteredRepos = githubData.repositories.filter((repo) => {
+    if (filter === 'personal') return repo.isPersonal;
+    if (filter === 'team') return !repo.isPersonal;
+    return true;
+  });
+
   return (
-    <section id="github" className="py-24 relative border-t border-white/5">
+    <section id="github" className="py-20 relative border-t border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-cyan/10 border border-accent-cyan/25 text-accent-cyan text-xs font-mono uppercase tracking-wider mb-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-cyan/10 border border-accent-cyan/25 text-accent-cyan text-xs font-mono uppercase tracking-wider mb-2">
               <Github className="w-3.5 h-3.5" />
-              <span>Open Source & Repositories</span>
+              <span>Open Source &amp; Code</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-              GitHub Showcase
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
+              GitHub Repositories
             </h2>
             <p className="mt-2 text-slate-400 text-sm sm:text-base max-w-xl">
-              Transparent, verifiable source code repositories across mobile applications, backend microservices, and modern web platforms.
+              Verifiable code repositories distinguishing personal software projects from collaborative team codebases.
             </p>
           </div>
 
@@ -48,73 +54,92 @@ export default function GitHub() {
             href={githubData.profileUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2.5 px-5 py-3 rounded-xl text-sm font-semibold bg-white/10 hover:bg-white/15 text-white border border-white/15 transition-all shadow-lg hover:border-accent-cyan/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-cyan shrink-0 self-start md:self-auto"
+            className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-white/10 hover:bg-white/15 text-white border border-white/15 transition-all shadow-md hover:border-accent-cyan/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-cyan shrink-0 self-start md:self-auto"
           >
             <Github className="w-4 h-4 text-accent-cyan" />
             <span>Visit @{githubData.username}</span>
-            <ExternalLink className="w-4 h-4 opacity-70" />
+            <ExternalLink className="w-3.5 h-3.5 opacity-70" />
           </a>
         </div>
 
-        {/* GitHub Profile Overview Card */}
-        <div className="p-6 rounded-2xl bg-dark-card border border-white/10 mb-8 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-4 text-center sm:text-left">
-            <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-accent-cyan shrink-0">
-              <Github className="w-7 h-7" />
-            </div>
-            <div>
-              <div className="flex items-center justify-center sm:justify-start gap-2">
-                <h3 className="text-xl font-bold text-white">
-                  {userData?.name || "Hashan Ganegoda"}
-                </h3>
-                <span className="text-xs font-mono text-accent-cyan bg-accent-cyan/10 px-2 py-0.5 rounded">
-                  @{githubData.username}
+        {/* GitHub Profile Metric Bar & Filter Tabs */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-4 border-b border-white/5">
+          {/* Profile Overview Pill */}
+          <div className="flex items-center gap-3">
+            <span className="text-xs font-mono text-slate-300">
+              Profile: <strong className="text-white">@{githubData.username}</strong>
+            </span>
+            <span className="text-slate-600">•</span>
+            <span className="text-xs font-mono text-emerald-400 flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+              Public Profile Verified
+            </span>
+            {userData?.public_repos !== undefined && (
+              <>
+                <span className="text-slate-600 hidden sm:inline">•</span>
+                <span className="text-xs font-mono text-slate-400 hidden sm:inline">
+                  {userData.public_repos} Public Repos
                 </span>
-              </div>
-              <p className="text-xs sm:text-sm text-slate-400 mt-1">
-                {userData?.bio || githubData.tagline}
-              </p>
-            </div>
+              </>
+            )}
           </div>
 
-          {/* Real Metrics Badges */}
-          <div className="flex items-center gap-3">
-            <div className="px-4 py-2 rounded-xl bg-white/5 border border-white/5 text-center">
-              <span className="text-xs text-slate-400 font-mono block">Public Repos</span>
-              <span className="text-base font-bold text-white font-mono">
-                {userData?.public_repos !== undefined ? userData.public_repos : "4+"}
-              </span>
-            </div>
-
-            <div className="px-4 py-2 rounded-xl bg-white/5 border border-white/5 text-center">
-              <span className="text-xs text-slate-400 font-mono block">Profile Status</span>
-              <span className="text-xs font-semibold text-emerald-400 font-mono flex items-center gap-1 justify-center">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                Active
-              </span>
-            </div>
+          {/* Category Filter Pills */}
+          <div className="flex items-center gap-1.5 self-start sm:self-auto">
+            <button
+              type="button"
+              onClick={() => setFilter('all')}
+              className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-colors ${
+                filter === 'all'
+                  ? 'bg-accent-cyan text-dark-bg font-semibold'
+                  : 'bg-white/5 text-slate-300 hover:text-white'
+              }`}
+            >
+              All Repos ({githubData.repositories.length})
+            </button>
+            <button
+              type="button"
+              onClick={() => setFilter('personal')}
+              className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-colors ${
+                filter === 'personal'
+                  ? 'bg-accent-cyan text-dark-bg font-semibold'
+                  : 'bg-white/5 text-slate-300 hover:text-white'
+              }`}
+            >
+              Personal Repos
+            </button>
+            <button
+              type="button"
+              onClick={() => setFilter('team')}
+              className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-colors ${
+                filter === 'team'
+                  ? 'bg-accent-cyan text-dark-bg font-semibold'
+                  : 'bg-white/5 text-slate-300 hover:text-white'
+              }`}
+            >
+              Team Projects (@Jayo013)
+            </button>
           </div>
         </div>
 
         {/* Repositories Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {githubData.pinnedRepos.map((repo, idx) => (
+          {filteredRepos.map((repo, idx) => (
             <div
               key={idx}
-              className="p-6 rounded-2xl bg-dark-card/80 border border-white/5 hover:border-white/20 transition-all flex flex-col justify-between group"
+              className="p-5 sm:p-6 rounded-2xl bg-dark-card border border-white/5 hover:border-white/20 transition-all flex flex-col justify-between group"
             >
               <div>
-                <div className="flex items-start justify-between gap-3 mb-3">
-                  <div className="flex items-center gap-2">
-                    <GitBranch className="w-4 h-4 text-accent-cyan" />
-                    <span className="font-mono text-xs text-slate-400">
-                      {repo.owner} /
-                    </span>
+                {/* Header: Repo Owner & Tag */}
+                <div className="flex items-start justify-between gap-3 mb-2.5">
+                  <div className="flex items-center gap-1.5 text-xs font-mono text-slate-400">
+                    <GitBranch className="w-3.5 h-3.5 text-accent-cyan" />
+                    <span>{repo.owner} /</span>
                     <a
                       href={repo.repoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-bold text-base text-white hover:text-accent-cyan transition-colors"
+                      className="font-bold text-sm sm:text-base text-white hover:text-accent-cyan transition-colors"
                     >
                       {repo.name}
                     </a>
@@ -129,6 +154,20 @@ export default function GitHub() {
                   >
                     <ExternalLink className="w-3.5 h-3.5" />
                   </a>
+                </div>
+
+                {/* Attribution Badge: Personal vs Team */}
+                <div className="mb-3">
+                  <span
+                    className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-[10px] font-mono ${
+                      repo.isPersonal
+                        ? 'bg-accent-cyan/10 text-accent-cyan border border-accent-cyan/20'
+                        : 'bg-indigo-500/10 text-indigo-300 border border-indigo-500/20'
+                    }`}
+                  >
+                    {repo.isPersonal ? <User className="w-3 h-3" /> : <Users className="w-3 h-3" />}
+                    <span>{repo.category}</span>
+                  </span>
                 </div>
 
                 <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
@@ -163,9 +202,9 @@ export default function GitHub() {
                     href={repo.repoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-accent-cyan hover:underline text-[11px]"
+                    className="text-accent-cyan hover:underline text-xs"
                   >
-                    View Repository &rarr;
+                    View Code &rarr;
                   </a>
                 </div>
               </div>

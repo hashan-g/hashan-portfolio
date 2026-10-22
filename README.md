@@ -22,14 +22,19 @@ A modern, fast, responsive personal developer portfolio website designed for **H
 ## 🚀 Key Features
 
 - **Modern Dark Developer Aesthetic:** Deep dark slate palette with cyan/indigo accent gradients, sleek glassmorphism, and high-contrast typography.
-- **Featured Project Deep-Dive (SpendWise):** Detailed case study card showcasing SpendWise (AI-powered personal finance manager) with architecture layers, interactive UI simulation, and repositories.
-- **Transparent Skill Categorization:** Logical grouping (Programming, Frontend, Backend, Mobile, Databases, AI/Data, Tools) with honest distinction between technologies used in production/real projects vs. foundational familiarity.
-- **Academic Timeline:** Clean card-based timeline highlighting dual qualifications:
-  - **BSc in Physical Science** — University of Ruhuna (Mathematical & Analytical Modeling)
+- **Balanced Hero Section:** Professional profile photograph, concise headline, short introduction, and immediate action buttons (`View Projects`, `Download CV`, `LinkedIn`, `GitHub`).
+- **Streamlined About Section:** Clear professional narrative highlighting physical science analytical discipline, formal IT engineering principles, and career direction as an early-career developer.
+- **Compact & Categorized Technical Skills:** 7 logical categories (Programming Languages, Frontend, Backend, Mobile, Databases, Data & AI, Developer Tools) with visual emphasis on technologies used in actual projects.
+- **Featured Project Case Study (SpendWise):** Accurately attributed as a **Final-Year Team Project** with problem/solution breakdown, selected key deliverables, and a dedicated **"My Contributions"** subsection.
+- **Additional Software Projects:**
+  - **VoyaGo:** Hotel booking website built with PHP, MySQL, Bootstrap 5, and JavaScript.
+  - **Logistics Inventory Platform:** Software platform with repository at [github.com/hashan-g/logistics-inventory-platform](https://github.com/hashan-g/logistics-inventory-platform).
+- **Academic Timeline & Achievement:**
+  - **BSc in Physical Science** — University of Ruhuna
   - **Bachelor of Information Technology (BIT)** — University of Colombo School of Computing (UCSC)
-- **Competitive Hackathon Achievement:** Professional showcase of **2nd Place at CodeRally Hackathon** (Team ByteBuilders - Intermediate Level).
-- **Verifiable GitHub Integration:** Direct repository links and dynamic public metrics retrieval without fabricated contribution data.
-- **Direct Contact Channel:** Functional contact modal with client-side validation, one-click email copy, and direct `mailto:` fallback.
+  - **CodeRally Hackathon — 2nd Place** (Team ByteBuilders - Intermediate Level).
+- **Verifiable GitHub Showcase:** Distinguishes Personal Repositories from Team/Collaborative Repositories with real metrics and zero fake activity charts.
+- **Transparent Direct Contact Channel:** Direct email composer, one-click email copy, LinkedIn, and CV download.
 - **Fully Accessible & Responsive:** Mobile navigation drawer, semantic HTML5, keyboard navigation, and `prefers-reduced-motion` compliance.
 
 ---
@@ -51,30 +56,31 @@ A modern, fast, responsive personal developer portfolio website designed for **H
 hashan-portfolio/
 ├── public/
 │   ├── favicon.svg          # Custom developer monogram favicon (HG)
-│   └── resume.pdf           # Curriculum Vitae file (replace with your official PDF)
+│   ├── hashan-profile.jpg   # Real professional profile photograph
+│   └── resume.pdf           # Curriculum Vitae file (official PDF)
 ├── src/
 │   ├── assets/              # Static media assets
 │   ├── components/
 │   │   ├── icons/
 │   │   │   └── BrandIcons.jsx # Pixel-perfect SVG brand icons (GitHub, LinkedIn, YouTube)
-│   │   ├── About.jsx        # Dual-grounding narrative & 4 core pillars
+│   │   ├── About.jsx        # Dual-grounding narrative & 3 core highlights
 │   │   ├── Achievements.jsx # CodeRally Hackathon 2nd Place showcase
-│   │   ├── Contact.jsx      # Contact cards, one-click copy, and message form
+│   │   ├── Contact.jsx      # Transparent contact cards & direct email composer
 │   │   ├── Education.jsx    # Ruhuna & UCSC timeline cards
-│   │   ├── FeaturedProject.jsx # SpendWise comprehensive case study card
+│   │   ├── FeaturedProject.jsx # SpendWise case study & My Contributions
 │   │   ├── Footer.jsx       # Navigation, copyright, and back-to-top action
-│   │   ├── GitHub.jsx       # GitHub repositories & profile metrics
-│   │   ├── Hero.jsx         # Status beacon, positioning, and action buttons
+│   │   ├── GitHub.jsx       # Personal & Team GitHub repositories
+│   │   ├── Hero.jsx         # Compact, laptop-friendly hero with profile photo
 │   │   ├── Navbar.jsx       # Fixed glassmorphism navbar & mobile drawer
 │   │   ├── Projects.jsx     # VoyaGo and Logistics Inventory Platform
-│   │   └── Skills.jsx       # Categorized skills grid with transparency badges
+│   │   └── Skills.jsx       # Compact 7-category technology chips
 │   ├── data/
 │   │   ├── achievements.js  # Hackathon & award details
 │   │   ├── education.js     # University degrees & core competencies
-│   │   ├── github.js        # Repositories & profile configuration
+│   │   ├── github.js        # Personal and team repositories configuration
 │   │   ├── profile.js       # Personal info, contact details, target roles
 │   │   ├── projects.js      # SpendWise, VoyaGo, & Logistics Platform data
-│   │   └── skills.js        # Categorized skills & project experience tags
+│   │   └── skills.js        # 7 categorized skills & project experience tags
 │   ├── App.jsx              # Main page orchestration
 │   ├── index.css            # Tailwind directives, theme variables & animations
 │   └── main.jsx             # React entry point
@@ -130,66 +136,11 @@ Ensure you have Node.js (v18+ or v20+) installed on your machine.
 
 ---
 
-## 📄 Updating Your Curriculum Vitae (CV)
-
-The portfolio's **"Download CV"** buttons are configured to download `/resume.pdf`.
-
-To update your resume:
-1. Export your finalized resume as a PDF file named `resume.pdf`.
-2. Place it into the `public/` directory:
-   ```text
-   public/resume.pdf
-   ```
-3. When deployed, Vite automatically serves this file at `https://your-domain/resume.pdf`.
-
----
-
-## 🌐 Deployment Instructions
-
-### Deploy to GitHub Pages
-
-1. In `vite.config.js`, set `base`:
-   ```javascript
-   export default defineConfig({
-     base: '/hashan-portfolio/', // or '/' for custom domain / user page
-     plugins: [react()],
-   })
-   ```
-
-2. Build the project:
-   ```bash
-   npm run build
-   ```
-
-3. Deploy using GitHub Actions or `gh-pages` package:
-   ```bash
-   npm install -D gh-pages
-   ```
-   Add to `package.json` scripts:
-   ```json
-   "deploy": "gh-pages -d dist"
-   ```
-   Run:
-   ```bash
-   npm run deploy
-   ```
-
-### Deploy to Vercel / Netlify
-
-1. Push your repository to GitHub (`https://github.com/hashan-g/hashan-portfolio`).
-2. Log in to [Vercel](https://vercel.com/) or [Netlify](https://www.netlify.com/).
-3. Import the repository.
-4. Framework Preset: **Vite**
-5. Build Command: `npm run build`
-6. Output Directory: `dist`
-7. Click **Deploy**.
-
----
-
 ## 🔒 Security & Privacy
 
 - No private API keys or personal credentials are committed to this repository.
 - Environment variables (`.env`) and build artifacts (`dist/`, `node_modules/`) are strictly ignored via `.gitignore`.
+- Repositories and contributions are transparently attributed between individual and team work.
 
 ---
 

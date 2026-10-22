@@ -2,119 +2,111 @@ export const featuredProject = {
   id: "spendwise",
   title: "SpendWise",
   subtitle: "AI-Powered Personal Finance Manager",
-  tagline: "Automated transaction capture, real-time financial health scoring, and offline-first intelligence powered by Groq and LLaMA.",
+  projectType: "Final-Year Team Project",
+  attribution: "Contributed to the development of SpendWise, an AI-powered personal finance management application.",
   overview:
-    "SpendWise is an AI-powered personal finance management application designed to help users track expenses, manage budgets, monitor savings goals, and understand their financial health.",
+    "SpendWise is a collaborative final-year group project engineered to help users track expenses, manage budgets, monitor savings goals, and understand their financial health through automated ingestion and AI assistance.",
   problem:
-    "Traditional personal finance tracking demands repetitive manual data entry after every purchase, causing user fatigue and incomplete records. Furthermore, static expense trackers fail to provide actionable financial health metrics, lack intelligent contextual advice, and frequently fail when internet connectivity is spotty.",
+    "Manual personal finance tracking suffers from high data-entry friction, delayed recording, and an absence of actionable financial health metrics. Users frequently abandon expense trackers because typing every receipt is tedious, while static applications fail to provide intelligent context or work reliably without an active internet connection.",
   solution:
-    "SpendWise solves these challenges by automating transaction intake through SMS notification capture and OCR receipt extraction. Combined with an offline-first Flutter architecture utilizing Hive, it provides instant local responsiveness. The system connects to Node.js and Python microservices executing low-latency Groq and LLaMA models to compute a Financial Health Score (0-100) and power an interactive AI financial assistant.",
+    "The team addressed these challenges by automating transaction capture via SMS parsing and OCR receipt scanning, paired with an offline-first Flutter mobile client using Hive local storage. Cloud services in Node.js and Python interface with Groq and open LLaMA models to deliver fast financial insights, an algorithmic Financial Health Score, and an AI conversational assistant.",
   technologies: [
     "Flutter",
     "Firebase",
     "Node.js",
     "Python",
+    "React",
     "Groq",
     "LLaMA",
     "Cloud Firestore",
     "Hive",
-    "React",
   ],
+  // Core selected features highlighted prominently
   keyFeatures: [
     {
-      title: "Automatic transaction capture through SMS",
-      desc: "Automatically extracts transaction details from bank SMS notifications without requiring manual user input.",
-      icon: "MessageSquareText",
-    },
-    {
-      title: "OCR-based transaction extraction",
-      desc: "Scans receipts and payment slips using optical character recognition to extract merchants, totals, and dates.",
+      title: "Automated SMS & OCR Capture",
+      desc: "Captures transactions automatically from bank SMS notifications and extracts receipt data using optical character recognition.",
       icon: "ScanLine",
+      isPrimary: true,
     },
     {
-      title: "Budget tracking",
-      desc: "Granular budget allocation across categories with real-time spending pace warnings.",
-      icon: "PieChart",
-    },
-    {
-      title: "Savings goals",
-      desc: "Targeted savings milestone monitoring with automated progress calculations.",
-      icon: "Target",
-    },
-    {
-      title: "Financial Health Score (0–100)",
-      desc: "Algorithmic evaluation scoring overall financial discipline, savings ratio, and spending trends.",
-      icon: "Activity",
-    },
-    {
-      title: "AI Financial Assistant",
-      desc: "Interactive conversational assistant answering finance queries and offering spending guidance.",
+      title: "AI Financial Assistant & Health Score",
+      desc: "Evaluates financial habits on a 0–100 score and delivers conversational guidance powered by Groq-accelerated LLaMA models.",
       icon: "Bot",
+      isPrimary: true,
     },
     {
-      title: "AI/LLM integration using Groq and LLaMA",
-      desc: "High-throughput, low-latency reasoning leveraging Groq hardware acceleration and open LLaMA weights.",
-      icon: "Cpu",
+      title: "Budget & Savings Goal Tracking",
+      desc: "Category-specific budget limits with real-time pace indicators and targeted milestone savings calculations.",
+      icon: "PieChart",
+      isPrimary: true,
     },
     {
-      title: "Admin dashboard",
-      desc: "Dedicated administrative portal built with React for platform oversight and user management.",
-      icon: "LayoutDashboard",
-    },
-    {
-      title: "TOTP-based two-factor authentication",
-      desc: "Time-based One-Time Password verification for enhanced account protection.",
-      icon: "ShieldCheck",
-    },
-    {
-      title: "Biometric authentication",
-      desc: "Fingerprint and facial recognition login support on compatible mobile devices.",
-      icon: "Fingerprint",
-    },
-    {
-      title: "Offline caching using Hive",
-      desc: "Fast, lightweight local key-value database ensuring seamless app performance without network access.",
+      title: "Offline-First Caching with Hive",
+      desc: "Fast local key-value persistence allowing uninterrupted expense logging when offline, with automatic Cloud Firestore sync.",
       icon: "Database",
+      isPrimary: true,
     },
     {
-      title: "Firebase/Firestore backend services",
-      desc: "Cloud Firestore collections and Firebase infrastructure for synchronized user data and authentication.",
-      icon: "Cloud",
+      title: "Biometric & Two-Factor Authentication",
+      desc: "Enhanced security incorporating mobile biometric authentication (fingerprint/face) and TOTP-based 2FA.",
+      icon: "ShieldCheck",
+      isPrimary: true,
+    },
+    {
+      title: "Administrative Dashboard",
+      desc: "Dedicated administrative portal built with React for platform monitoring, aggregate insights, and user management.",
+      icon: "LayoutDashboard",
+      isPrimary: true,
     },
   ],
-  architectureHighlights: [
+  // Dedicated section specifically identifying Hashan's contributions
+  myContributions: [
     {
-      title: "Client Layer (Mobile & Web)",
-      tech: "Flutter (Dart) & React.js",
-      desc: "Cross-platform mobile client built with Flutter with native Android SMS/biometric access, complemented by a dedicated React administrative dashboard.",
+      area: "AI/LLM Integration & Financial Assistant",
+      details:
+        "Contributed to integrating fast LLM inference pipelines utilizing Groq hardware acceleration and open LLaMA models to power the conversational financial assistant and context-aware spending feedback.",
     },
     {
-      title: "Local Persistence Layer",
-      tech: "Hive Local DB",
-      desc: "Ultra-fast NoSQL key-value storage enabling zero-latency reads/writes and reliable offline capabilities before cloud synchronization.",
+      area: "Backend Microservices & API Endpoints",
+      details:
+        "Contributed to developing backend RESTful services using Node.js and Python, handling secure transaction routing, data transformations, and synchronization with Cloud Firestore.",
     },
     {
-      title: "Backend & Orchestration",
-      tech: "Node.js & Express.js",
-      desc: "REST microservices managing authenticated transactions, administrative operations, and security coordination.",
+      area: "Data Persistence & Offline Caching",
+      details:
+        "Participated in implementing client-side local caching structures using Hive in Flutter, ensuring zero-latency reads/writes and offline resilience before network syncing.",
     },
     {
-      title: "AI & Intelligence Engine",
-      tech: "Python, Groq & LLaMA",
-      desc: "Specialized service orchestrating prompt pipelines and high-speed LLM inference via Groq to generate Financial Health Scores and conversational guidance.",
-    },
-    {
-      title: "Cloud & Security Services",
-      tech: "Firebase Auth, Cloud Firestore & TOTP",
-      desc: "Secure multi-factor authentication, biometric bridging, and scalable document-based real-time database syncing.",
+      area: "Security & Authentication Workflows",
+      details:
+        "Worked on authentication flows combining Firebase Authentication services, TOTP two-factor security, and device-level biometric integration.",
     },
   ],
-  links: {
-    frontend: "https://github.com/Jayo013/spendwise-app-front-end.git",
-    admin: "https://github.com/Jayo013/spendwise-app-admin.git",
-    backend: "https://github.com/Jayo013/spendwise-app-backend.git",
-    youtube: "https://youtube.com/@spendwise-k1x",
-  },
+  // Clear attribution note for transparency
+  attributionNote:
+    "Note: SpendWise was developed collaboratively as a university final-year team project. The features above represent the team's combined software deliverables, with my primary technical focus centered on backend API services, AI/LLM integration, and data workflows.",
+  repositories: [
+    {
+      name: "Frontend (Mobile App)",
+      tech: "Flutter / Dart / Hive",
+      url: "https://github.com/Jayo013/spendwise-app-front-end",
+      type: "Team Repository (Hosted by @Jayo013)",
+    },
+    {
+      name: "Backend Microservices",
+      tech: "Node.js / Express / Python / Groq",
+      url: "https://github.com/Jayo013/spendwise-app-backend",
+      type: "Team Repository (Hosted by @Jayo013)",
+    },
+    {
+      name: "Admin Dashboard",
+      tech: "React / Vite / Tailwind",
+      url: "https://github.com/Jayo013/spendwise-app-admin",
+      type: "Team Repository (Hosted by @Jayo013)",
+    },
+  ],
+  channelUrl: "https://youtube.com/@spendwise-k1x",
 };
 
 export const secondaryProjects = [
@@ -123,35 +115,33 @@ export const secondaryProjects = [
     title: "VoyaGo — Hotel Booking Website",
     category: "Full-Stack Web Development",
     technologies: ["PHP", "MySQL", "Bootstrap 5", "JavaScript"],
-    description: "A hotel booking website developed as a web development project.",
-    details:
-      "VoyaGo provides a structured web platform for browsing accommodations, viewing room availability, and completing reservation requests. It implements relational database management with MySQL for hotel inventory, customer records, and booking states, styled with a clean Bootstrap 5 user interface.",
-    features: [
-      "Hotel & room availability browsing",
-      "Reservation and booking management",
-      "Relational database modeling with MySQL",
-      "Dynamic PHP server-side handling and sessions",
-      "Responsive UI built with Bootstrap 5 and JavaScript",
+    role: "Full-Stack Developer (Web Project)",
+    description:
+      "A dynamic hotel booking web platform developed as a comprehensive web project. Engineered with PHP and MySQL to manage accommodation listings, room availability, customer reservations, and session states.",
+    highlights: [
+      "Relational database design in MySQL for room inventories, reservations, and customer records",
+      "Dynamic server-side rendering, session authentication, and booking endpoints in PHP",
+      "Responsive user interface styled with Bootstrap 5 and client-side form validation in JavaScript",
     ],
-    github: null, // Private/academic project; clean badge displayed
+    github: null,
+    githubNote: "Academic project codebase",
     status: "Completed Project",
   },
   {
     id: "logistics-inventory",
     title: "Logistics Inventory Platform",
-    category: "Enterprise Software Platform",
+    category: "Software Platform",
     technologies: ["Software Architecture", "Inventory Systems", "Logistics Workflows", "Data Management"],
-    description: "A software project focused on logistics and inventory management.",
-    details:
-      "Designed to address supply chain asset tracking, inventory stock reconciliation, and warehouse dispatch workflows. Architected with structured data models to improve inventory visibility and reduce tracking discrepancies.",
-    features: [
-      "Inventory tracking and stock balance management",
-      "Logistics dispatch and movement records",
-      "Structured data schemas for inventory auditing",
-      "Operational workflow management",
+    role: "Developer",
+    description:
+      "A software platform focused on logistics coordination, warehouse stock tracking, and inventory movement auditing. Designed to streamline supply chain records and reduce balance discrepancies.",
+    highlights: [
+      "Structured inventory data schemas for stock balancing and asset auditing",
+      "Logistics dispatch and movement tracking workflows",
+      "Clean software architecture designed for data consistency and reliable records",
     ],
-    github: null,
-    status: "Project in Progress / Documentation Available",
-    isPlaceholder: true,
+    github: "https://github.com/hashan-g/logistics-inventory-platform",
+    githubNote: "Personal Repository",
+    status: "In Development",
   },
 ];
