@@ -13,6 +13,9 @@ import {
   CheckCircle2,
   Sparkles,
   Info,
+  Smartphone,
+  Server,
+  GitPullRequest,
 } from 'lucide-react';
 
 export default function FeaturedProject() {
@@ -30,6 +33,21 @@ export default function FeaturedProject() {
         return ShieldCheck;
       case 'LayoutDashboard':
         return LayoutDashboard;
+      default:
+        return CheckCircle2;
+    }
+  };
+
+  const getContribIcon = (iconName) => {
+    switch (iconName) {
+      case 'Smartphone':
+        return Smartphone;
+      case 'Server':
+        return Server;
+      case 'GitPullRequest':
+        return GitPullRequest;
+      case 'Users':
+        return Users;
       default:
         return CheckCircle2;
     }
@@ -173,25 +191,30 @@ export default function FeaturedProject() {
                 </h3>
               </div>
               <span className="text-xs font-mono text-slate-400">
-                Backend Services • AI/LLM Integration • Persistence
+                Mobile UI • Admin Backend • Code Review • Collaboration
               </span>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {featuredProject.myContributions.map((contrib, cIdx) => (
-                <div
-                  key={cIdx}
-                  className="p-4 rounded-xl bg-dark-card/90 border border-white/10 space-y-1.5"
-                >
-                  <div className="flex items-center gap-2 text-white font-semibold text-xs sm:text-sm">
-                    <CheckCircle2 className="w-4 h-4 text-accent-cyan shrink-0" />
-                    <span>{contrib.area}</span>
+              {featuredProject.myContributions.map((contrib, cIdx) => {
+                const ContribIcon = getContribIcon(contrib.icon);
+                return (
+                  <div
+                    key={cIdx}
+                    className="p-4 sm:p-5 rounded-xl bg-dark-card/90 border border-white/10 space-y-2 hover:border-accent-cyan/30 transition-colors"
+                  >
+                    <div className="flex items-center gap-2.5 text-white font-semibold text-xs sm:text-sm">
+                      <div className="w-7 h-7 rounded-lg bg-accent-cyan/10 border border-accent-cyan/20 flex items-center justify-center text-accent-cyan shrink-0">
+                        <ContribIcon className="w-3.5 h-3.5" />
+                      </div>
+                      <span>{contrib.area}</span>
+                    </div>
+                    <p className="text-xs text-slate-300 leading-relaxed pl-9">
+                      {contrib.details}
+                    </p>
                   </div>
-                  <p className="text-xs text-slate-300 leading-relaxed pl-6">
-                    {contrib.details}
-                  </p>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
             {/* Attribution Transparency Note */}

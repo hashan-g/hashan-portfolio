@@ -12,31 +12,7 @@ export const profileData = {
     github: "https://github.com/hashan-g",
     linkedin: "https://www.linkedin.com/in/hashan-ganegoda/",
     resume: "/resume.pdf",
-    // Note: Update with your primary contact email address
-    emailRaw: "hashan.ganegoda.dev@gmail.com",
-    email: "mailto:hashan.ganegoda.dev@gmail.com",
+    emailRaw: "ganegodahashan@gmail.com",
+    email: "mailto:ganegodahashan@gmail.com",
   },
-  highlights: [
-    {
-      title: "Dual Academic Grounding",
-      description: "BSc in Physical Science (University of Ruhuna) providing strong mathematical and analytical discipline, paired with the Bachelor of Information Technology (BIT) at UCSC.",
-    },
-    {
-      title: "Full-Stack & Mobile Development",
-      description: "Practical development experience across modern frontend (React, Tailwind), backend APIs (Node.js, Express, PHP), and mobile apps (Flutter, Hive).",
-    },
-    {
-      title: "Applied AI & Data Analytics",
-      description: "Hands-on integration of fast inference engines (Groq, LLaMA) and data-oriented problem solving using Python and structured data schemas.",
-    },
-  ],
-  targetRoles: [
-    "Junior Software Engineer",
-    "Full-Stack Developer",
-    "Frontend Developer",
-    "Python Developer",
-    "Data Analyst",
-    "Junior Data Scientist",
-    "AI/ML Junior Engineer",
-  ],
 };

@@ -3,7 +3,8 @@ export const featuredProject = {
   title: "SpendWise",
   subtitle: "AI-Powered Personal Finance Manager",
   projectType: "Final-Year Team Project",
-  attribution: "Contributed to the development of SpendWise, an AI-powered personal finance management application.",
+  attribution:
+    "Contributed to the development of SpendWise, an AI-powered personal finance management application built as a collaborative final-year group project.",
   overview:
     "SpendWise is a collaborative final-year group project engineered to help users track expenses, manage budgets, monitor savings goals, and understand their financial health through automated ingestion and AI assistance.",
   problem:
@@ -60,32 +61,36 @@ export const featuredProject = {
       isPrimary: true,
     },
   ],
-  // Dedicated section specifically identifying Hashan's contributions
+  // Dedicated section specifically identifying Hashan's verified contributions
   myContributions: [
     {
-      area: "AI/LLM Integration & Financial Assistant",
+      area: "Mobile UI Implementation",
+      icon: "Smartphone",
       details:
-        "Contributed to integrating fast LLM inference pipelines utilizing Groq hardware acceleration and open LLaMA models to power the conversational financial assistant and context-aware spending feedback.",
+        "Worked from Figma designs to implement selected parts of the mobile application interface, including Transactions, Categories, Profile, and Notifications.",
     },
     {
-      area: "Backend Microservices & API Endpoints",
+      area: "Admin-Side Backend",
+      icon: "Server",
       details:
-        "Contributed to developing backend RESTful services using Node.js and Python, handling secure transaction routing, data transformations, and synchronization with Cloud Firestore.",
+        "Contributed to backend components of the SpendWise admin system.",
     },
     {
-      area: "Data Persistence & Offline Caching",
+      area: "Code Review",
+      icon: "GitPullRequest",
       details:
-        "Participated in implementing client-side local caching structures using Hive in Flutter, ensuring zero-latency reads/writes and offline resilience before network syncing.",
+        "Reviewed code as part of the development process to help maintain consistency and quality across team deliverables.",
     },
     {
-      area: "Security & Authentication Workflows",
+      area: "Team Collaboration",
+      icon: "Users",
       details:
-        "Worked on authentication flows combining Firebase Authentication services, TOTP two-factor security, and device-level biometric integration.",
+        "Supported the team lead and other team members with technical assistance, troubleshooting, and general development tasks.",
     },
   ],
   // Clear attribution note for transparency
   attributionNote:
-    "Note: SpendWise was developed collaboratively as a university final-year team project. The features above represent the team's combined software deliverables, with my primary technical focus centered on backend API services, AI/LLM integration, and data workflows.",
+    "Note: SpendWise was developed collaboratively as a university final-year team project. The key features above represent the team's combined software deliverables, with my verified contributions focused on mobile UI implementation from Figma designs, admin-side backend components, code reviews, and team technical support.",
   repositories: [
     {
       name: "Frontend (Mobile App)",

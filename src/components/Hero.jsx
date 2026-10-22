@@ -11,6 +11,23 @@ export default function Hero() {
     { label: "Flutter Mobile Engineering", icon: Smartphone, color: "text-sky-400" },
   ];
 
+  const renderHighlightPills = (extraClass = "") => (
+    <div className={`grid grid-cols-2 gap-2 w-full ${extraClass}`}>
+      {highlightPills.map((pill, idx) => {
+        const Icon = pill.icon;
+        return (
+          <div
+            key={idx}
+            className="flex items-center gap-2 px-2.5 sm:px-3 py-1.5 rounded-lg bg-dark-card/60 border border-white/5 text-xs text-slate-300"
+          >
+            <Icon className={`w-3.5 h-3.5 ${pill.color} shrink-0`} />
+            <span className="truncate">{pill.label}</span>
+          </div>
+        );
+      })}
+    </div>
+  );
+
   return (
     <section id="hero" className="relative pt-24 pb-12 sm:pt-28 sm:pb-16 lg:py-20 flex items-center overflow-hidden">
       {/* Background Subtle Gradient Blobs */}
@@ -100,20 +117,7 @@ export default function Hero() {
             </div>
 
             {/* Desktop Credentials / Domains */}
-            <div className="hidden lg:grid grid-cols-2 gap-2 w-full max-w-xl">
-              {highlightPills.map((pill, idx) => {
-                const Icon = pill.icon;
-                return (
-                  <div
-                    key={idx}
-                    className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-dark-card/60 border border-white/5 text-xs text-slate-300"
-                  >
-                    <Icon className={`w-3.5 h-3.5 ${pill.color} shrink-0`} />
-                    <span className="truncate">{pill.label}</span>
-                  </div>
-                );
-              })}
-            </div>
+            {renderHighlightPills("hidden lg:grid max-w-xl")}
 
           </div>
 
@@ -159,20 +163,7 @@ export default function Hero() {
             </div>
 
             {/* Mobile Credentials / Domains (Stacked below photo & minimal label on mobile) */}
-            <div className="grid lg:hidden grid-cols-2 gap-2 w-full max-w-xs sm:max-w-sm mt-6">
-              {highlightPills.map((pill, idx) => {
-                const Icon = pill.icon;
-                return (
-                  <div
-                    key={idx}
-                    className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-dark-card/60 border border-white/5 text-xs text-slate-300"
-                  >
-                    <Icon className={`w-3.5 h-3.5 ${pill.color} shrink-0`} />
-                    <span className="truncate">{pill.label}</span>
-                  </div>
-                );
-              })}
-            </div>
+            {renderHighlightPills("grid lg:hidden max-w-xs sm:max-w-sm mt-6")}
 
           </div>
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUp, Download } from 'lucide-react';
+import { ArrowUp, Download, Mail } from 'lucide-react';
 import { Github, Linkedin } from './icons/BrandIcons';
 import { profileData } from '../data/profile';
 
@@ -62,6 +62,15 @@ export default function Footer() {
                 className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border border-white/5 transition-colors"
               >
                 <Github className="w-4 h-4" />
+              </a>
+
+              <a
+                href={profileData.links.email}
+                aria-label="Send email to Hashan"
+                className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border border-white/5 transition-colors"
+                title={`Email: ${profileData.links.emailRaw}`}
+              >
+                <Mail className="w-4 h-4" />
               </a>
 
               <a
